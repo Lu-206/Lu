@@ -23,3 +23,18 @@
 - **palace-contest.jpg** — Wu Huanqi；[A panoramic view of the Forbidden City](https://commons.wikimedia.org/wiki/File:A_panoramic_view_of_the_Forbidden_City.jpg)；[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)。Wiki Loves Monuments 2017 参赛作品。已缩放压缩，网页中裁切及调色。
 - **palace-sunset.jpg** — User:kallgan；[Sunset of the Forbidden City 2006](https://commons.wikimedia.org/wiki/File:Sunset_of_the_Forbidden_City_2006.JPG)；[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)。Commons 每日图片（2006-08-25）。已缩放压缩，网页中裁切及调色。
 - **temple-portrait.jpg** — Balon Greyjoy；[20200110 Temple of Heaven-1](https://commons.wikimedia.org/wiki/File:20200110_Temple_of_Heaven-1.jpg)；[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)。已缩放压缩，网页中裁切及调色。
+
+
+## 第三轮：明亮经典摄影
+
+以下为可授权的经典摄影试版；没有将推荐图片或参赛作品标记为摄影比赛获奖作品。全部轮换图均已更换，待取得可用的获奖原片后按原位替换。来源作品缩放压缩并转为 WebP，网页中做裁切展示，已去掉整图压暗与去饱和滤镜。
+
+- **palace-classic.webp** — Pixelflake；[The Forbidden City - View from Coal Hill.jpg](https://commons.wikimedia.org/wiki/File:The_Forbidden_City_-_View_from_Coal_Hill.jpg)；[原图许可](https://creativecommons.org/licenses/by-sa/3.0)。
+- **palace-sunny.webp** — CEphoto, Uwe Aranas；[Beijing China Forbidden-City-01.jpg](https://commons.wikimedia.org/wiki/File:Beijing_China_Forbidden-City-01.jpg)；[原图许可](https://creativecommons.org/licenses/by-sa/3.0)。
+- **wall-classic.webp** — N509FZ；[Mutianyu from Watchtower 20 (20190915140308).jpg](https://commons.wikimedia.org/wiki/File:Mutianyu_from_Watchtower_20_%2820190915140308%29.jpg)；[原图许可](https://creativecommons.org/licenses/by-sa/4.0)。
+- **temple-classic.webp** — Shujianyang；[Temple of Heaven 20160323 01.jpg](https://commons.wikimedia.org/wiki/File:Temple_of_Heaven_20160323_01.jpg)；[原图许可](https://creativecommons.org/licenses/by-sa/4.0)。
+- **lake-classic.webp** — EditQ；[Shichahai 10.jpg](https://commons.wikimedia.org/wiki/File:Shichahai_10.jpg)；[原图许可](https://creativecommons.org/licenses/by-sa/4.0)。
+- **hutong-c.webp** — Anagoria；[2016-09-04 Beijing Nanluoguxiang anagoria 19.jpg](https://commons.wikimedia.org/wiki/File:2016-09-04_Beijing_Nanluoguxiang_anagoria_19.jpg)；[原图许可](https://creativecommons.org/licenses/by/3.0)。
+- **city-classic.webp** — Picrazy2；[Beijing skyline from northeast 4th ring road (cropped).jpg](https://commons.wikimedia.org/wiki/File:Beijing_skyline_from_northeast_4th_ring_road_%28cropped%29.jpg)；[原图许可](https://creativecommons.org/licenses/by-sa/4.0)。
+
+- **summer-scene.webp** — storyvillegirl；[Summer Palace scene 1.jpg](https://commons.wikimedia.org/wiki/File:Summer_Palace_scene_1.jpg)；[原图许可](https://creativecommons.org/licenses/by-sa/2.0)。
