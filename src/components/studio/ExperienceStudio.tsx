@@ -5,7 +5,7 @@ const features=[
  {icon:Compass,title:'懂你的偏好',en:'MADE FOR YOU',desc:'想追一场落日，还是慢逛一条胡同？从你的喜好开始。',image:'/assets/palace-sunny.webp',caption:'在故宫，等一束属于你的光',chips:['建筑与光影','慢慢走','避开人潮'],kind:'preference'},
  {icon:Route,title:'路线有章法',en:'A BETTER WAY',desc:'让想去的地方连成一条线，给路上的惊喜留一点时间。',image:'/assets/palace-classic.webp',caption:'循着中轴线，走进北京',chips:['故宫','景山','鼓楼'],kind:'route'},
  {icon:Wallet,title:'预算看得见',en:'ROOM FOR MORE',desc:'住得舒服，吃得地道。每一笔预算，都花在你的期待上。',image:'/assets/temple-classic.webp',caption:'把预算，留给真正喜欢的体验',chips:['住宿','餐饮','交通'],kind:'budget'},
- {icon:MessageCircle,title:'旅途有回应',en:'ALWAYS WITH YOU',desc:'下一站怎么去，附近吃什么？把路上的小问题交给京途。',image:'/assets/lake-classic.webp',caption:'随时提问，继续你的旅程',chips:['交通怎么走','附近吃什么','出行提醒'],kind:'chat'},
+ {icon:MessageCircle,title:'旅途有回应',en:'ALWAYS WITH YOU',desc:'下一站怎么去，附近吃什么？把路上的小问题交给京途。',image:'/assets/houhai-golden.webp',caption:'随时提问，继续你的旅程',chips:['交通怎么走','附近吃什么','出行提醒'],kind:'chat'},
 ];
 export default function ExperienceStudio({onPlan}:{onPlan:(value?:string)=>void}){
  const [active,setActive]=useState(0),[spot,setSpot]=useState(0);const f=features[active];

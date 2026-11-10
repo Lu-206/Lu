@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {ArrowUpRight,Check,MapPin,Sparkles} from 'lucide-react';
-const moods=[{name:'文化寻踪',text:'我想去北京看故宫、天坛，喜欢历史文化和建筑摄影。',image:'/assets/temple-classic.webp',place:'天坛 · 一眼千年'},{name:'山河远行',text:'我想去北京爬长城，喜欢自然风景，希望留足休息时间。',image:'/assets/wall-classic.webp',place:'长城 · 山河入画'},{name:'街巷烟火',text:'我想慢慢逛北京的胡同和什刹海，找地道美食和城市生活。',image:'/assets/hutong-c.webp',place:'胡同 · 人间烟火'}];
+const moods=[{name:'文化寻踪',text:'我想去北京看故宫、天坛，喜欢历史文化和建筑摄影。',image:'/assets/temple-classic.webp',place:'天坛 · 一眼千年'},{name:'山河远行',text:'我想去北京爬长城，喜欢自然风景，希望留足休息时间。',image:'/assets/wall-classic.webp',place:'长城 · 山河入画'},{name:'街巷烟火',text:'我想慢慢逛北京的胡同和什刹海，找地道美食和城市生活。',image:'/assets/wudaoying-street.webp',place:'胡同 · 人间烟火'}];
 export default function PlannerStudio({prompt,onChange,onPlan}:{prompt:string;onChange:(v:string)=>void;onPlan:()=>void}){
  const [mood,setMood]=useState(0);
  return <section className="planner-studio" aria-labelledby="planner-heading">

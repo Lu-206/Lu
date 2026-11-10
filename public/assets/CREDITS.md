@@ -38,3 +38,9 @@
 - **city-classic.webp** — Picrazy2；[Beijing skyline from northeast 4th ring road (cropped).jpg](https://commons.wikimedia.org/wiki/File:Beijing_skyline_from_northeast_4th_ring_road_%28cropped%29.jpg)；[原图许可](https://creativecommons.org/licenses/by-sa/4.0)。
 
 - **summer-scene.webp** — storyvillegirl；[Summer Palace scene 1.jpg](https://commons.wikimedia.org/wiki/File:Summer_Palace_scene_1.jpg)；[原图许可](https://creativecommons.org/licenses/by-sa/2.0)。
+
+## Street and waterfront refresh
+
+- `hutong-lantern.webp`: zhang kaiyv, Beijing lantern-lined street, [Unsplash original](https://unsplash.com/photos/brown-and-white-pendant-lamps-Qdv5w6UioTU), [Unsplash License](https://unsplash.com/license). Cropped and converted to WebP. Exact hutong is not asserted.
+- `wudaoying-street.webp`: Andrzej Otrębski, [Beijing hutong Wudaoying 1.jpg](https://commons.wikimedia.org/wiki/File:Beijing_hutong_Wudaoying_1.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Resized and converted to WebP; this derivative remains under CC BY-SA 4.0.
+- `houhai-golden.webp`: oenvoyage, [Houhai by sunset](https://commons.wikimedia.org/wiki/File:Houhai_by_sunset_-_panoramio.jpg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Resized and converted to WebP; this derivative remains under CC BY-SA 3.0.
