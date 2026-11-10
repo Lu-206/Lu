@@ -22,7 +22,20 @@ npm run dev
 
 ## 设计
 
-Figma：https://www.figma.com/design/JdRlCdP1qSNHQLTtPnIdKX
+首轮 Figma 画板：https://www.figma.com/design/JdRlCdP1qSNHQLTtPnIdKX
+第二轮三个区域的设计以当前可运行代码为准。
 宫墙红 #8D2925 / 琉璃金 #D6B56D / 宣纸白 #F5F1E8 / 科技墨蓝 #202D3B。
 
 图片在 public/assets 本地提供；来源与署名见 public/assets/CREDITS.md。
+
+## 第二轮设计优化
+
+新增北京摄影精选与三处交互重设计：
+
+- 介绍区：ThreeUI Topo Field 改造的金色地形线，四类功能可切换；中轴线示意可点选节点。
+- 规划区：主题选择联动实景图片和输入内容，增加旅行登机牌与轻量光轨按钮。
+- 规划弹窗：摄影侧栏、步骤进度、联动预设、旅行节奏选择与确认摘要；手机端转为单栏。
+
+模板筛选与改造记录：[docs/design-sources.md](docs/design-sources.md)。
+
+验证：生产构建、1440 桌面端、390/768 移动端、四类功能切换、节点选择、主题与输入联动、预设天数/预算同步、确认及返回修改、Escape 关闭、减少动态效果模式。
