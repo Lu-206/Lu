@@ -68,7 +68,10 @@ export function createApp({model=callModel,now=Date.now}:{model?:Model;now?:()=>
       return json(res,safe.status,{error:{code:safe.code,message:safe.message}});
     }finally{if(locked && conversation){conversation.busy=false;active--;}}
   });
-  server.requestTimeout=15000;server.headersTimeout=10000;
+  // Model calls may take longer than a normal page request. Keep a bounded
+  // request lifetime, but let the model's own 35s timeout return a useful JSON
+  // error instead of Node closing the connection first.
+  server.requestTimeout=120000;server.headersTimeout=10000;
   server.keepAliveTimeout=5000;
   return server;
 }

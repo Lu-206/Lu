@@ -19,7 +19,7 @@ export function useTravelChat(){
     sending.current=true;
     setBusy(true);setPending(message.trim());setError(null);
     try{
-      const response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},signal:AbortSignal.timeout(45000),body:JSON.stringify({conversationId:result?.conversationId ?? null,message:message.trim(),...(!result && useSaved && preferences?{preferences}:{})})});
+      const response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},signal:AbortSignal.timeout(120000),body:JSON.stringify({conversationId:result?.conversationId ?? null,message:message.trim(),...(!result && useSaved && preferences?{preferences}:{})})});
       const raw=await response.text();let data;
       try{data=JSON.parse(raw);}catch{throw {code:'API_UNAVAILABLE',message:'无法读取 AI 服务响应，请确认后端已启动，并通过 npm.cmd run dev 启动项目。'};}
       if(!response.ok)throw {code:typeof data?.error?.code==='string'?data.error.code:'API_ERROR',message:typeof data?.error?.message==='string'?data.error.message:'AI 请求失败，请稍后重试。'};
