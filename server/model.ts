@@ -10,6 +10,42 @@ export type Model = (input:ModelInput) => Promise<z.infer<typeof ModelOutputSche
 const envelope = z.object({choices:z.array(z.object({finish_reason:z.string().nullable().optional(),message:z.object({content:z.string().nullable()})})).min(1)});
 let proxyAgent:EnvHttpProxyAgent | undefined;
 
+// DeepSeek occasionally omits unchanged optional objects or serializes numbers as
+// strings. Repair only these mechanical differences, then run the same strict
+// Zod schema used for every client response. Semantic guesses are never made.
+function numberOrNull(value:unknown){
+  if(value === null || value === undefined || value === '') return null;
+  if(typeof value === 'number' && Number.isFinite(value)) return value;
+  if(typeof value === 'string' && /^\s*\d+(?:\.\d+)?\s*$/.test(value)) return Number(value);
+  return value;
+}
+function cleanJsonText(value:string){
+  const trimmed=value.trim();
+  const fenced=trimmed.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
+  return (fenced?.[1] ?? trimmed).trim();
+}
+function normalizeOutput(value:unknown,previous:Requirements){
+  if(!value || typeof value !== 'object') return value;
+  const candidate=value as Record<string,unknown>;
+  if(!candidate.requirements || typeof candidate.requirements!=='object') return value;
+  const rawReq=candidate.requirements as Record<string,unknown>;
+  const rawPeople=(rawReq.people && typeof rawReq.people==='object'?rawReq.people:{}) as Record<string,unknown>;
+  const rawBudget=(rawReq.budget && typeof rawReq.budget==='object'?rawReq.budget:{}) as Record<string,unknown>;
+  const rawDates=(rawReq.dates && typeof rawReq.dates==='object'?rawReq.dates:{}) as Record<string,unknown>;
+  const rawAccommodation=(rawReq.accommodation && typeof rawReq.accommodation==='object'?rawReq.accommodation:{}) as Record<string,unknown>;
+  const req={
+    ...previous,...rawReq,
+    people:{...previous.people,...rawPeople,total:numberOrNull(rawPeople.total ?? previous.people.total),adults:numberOrNull(rawPeople.adults ?? previous.people.adults),children:numberOrNull(rawPeople.children ?? previous.people.children)},
+    budget:{...previous.budget,...rawBudget,amount:numberOrNull(rawBudget.amount ?? previous.budget.amount),currency:'CNY'},
+    dates:{...previous.dates,...rawDates},
+    accommodation:{...previous.accommodation,...rawAccommodation,nightlyBudget:numberOrNull(rawAccommodation.nightlyBudget ?? previous.accommodation.nightlyBudget)},
+    interests:Array.isArray(rawReq.interests)?rawReq.interests:previous.interests,
+    dietaryRestrictions:Array.isArray(rawReq.dietaryRestrictions)?rawReq.dietaryRestrictions:previous.dietaryRestrictions,
+    transportPreferences:Array.isArray(rawReq.transportPreferences)?rawReq.transportPreferences:previous.transportPreferences,
+  };
+  return {reply:typeof candidate.reply==='string'?candidate.reply.trim():candidate.reply,requirements:req};
+}
+
 export const callModel:Model = async ({requirements,messages,today}) => {
   const key = process.env.DEEPSEEK_API_KEY?.trim();
   if(!key) throw new ApiError(503,'AI_NOT_CONFIGURED','AI 服务尚未配置，请在服务端 .env 中设置 DEEPSEEK_API_KEY。');
@@ -51,7 +87,9 @@ export const callModel:Model = async ({requirements,messages,today}) => {
     if(!parsed.success) throw new Error('invalid envelope');
     const choice = parsed.data.choices[0];
     if(choice.finish_reason !== 'stop' || !choice.message.content) throw new Error('incomplete response');
-    return ModelOutputSchema.parse(JSON.parse(choice.message.content));
+    const rawModel=JSON.parse(cleanJsonText(choice.message.content));
+    const normalized=normalizeOutput(rawModel,requirements);
+    return ModelOutputSchema.parse(normalized);
   } catch(error){
     if(error instanceof ApiError) throw error;
     if(error instanceof Error && /timeout|abort/i.test(error.name)) throw new ApiError(504,'AI_TIMEOUT','AI 响应超时，请稍后重试，你的已确认需求不会丢失。');
