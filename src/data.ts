@@ -8,7 +8,7 @@ export const scenes = [
 export const destinations = [
   { name:'故宫博物院', en:'THE PALACE MUSEUM', desc:'沿着红墙金瓦，走进六百年的时间', tag:'皇家文化', time:'建议 3–4 小时', image:'/assets/palace-sunny.webp', location:'东城区 · 景山前街', detail:'从午门出发，沿中轴线探索三大殿与宫廷院落。馆内步行较多，建议穿舒适的鞋，预留半天慢慢参观。', tip:'参观须提前核实实名预约、开放日期和入馆时段。' },
   { name:'慕田峪长城', en:'THE GREAT WALL', desc:'登高望远，在群山之间读懂壮阔', tag:'山河远行', time:'建议 4–5 小时', image:'/assets/wall-classic.webp', location:'怀柔区 · 慕田峪', detail:'沿着山势起伏的城墙行走，远眺北方群山。可结合体力选择步行路段与缆车，往返市区需单独预留交通时间。', tip:'山区天气变化较快，出行前查看天气与景区公告。' },
-  { name:'天坛公园', en:'TEMPLE OF HEAVEN', desc:'在祈年殿下，感受东方秩序之美', tag:'文化漫游', time:'建议 2–3 小时', image:'/assets/temple-classic.webp', location:'东城区 · 天坛东路', detail:'祈年殿、回音壁与古柏林共同构成一段安静的文化漫游。清晨逛公园，能遇见另一种北京生活。', tip:'公园门票与部分院落门票范围不同，请核实联票与开放时间。' },
+  { name:'天坛公园', en:'TEMPLE OF HEAVEN', desc:'在祈年殿下，感受东方秩序之美', tag:'文化漫游', time:'建议 2–3 小时', image:'/assets/verified/temple-heaven.webp', location:'东城区 · 天坛东路', detail:'祈年殿、回音壁与古柏林共同构成一段安静的文化漫游。清晨逛公园，能遇见另一种北京生活。', tip:'公园门票与部分院落门票范围不同，请核实联票与开放时间。' },
   { name:'颐和园', en:'THE SUMMER PALACE', desc:'借一湖山色，留半日闲情', tag:'园林山水', time:'建议 4–5 小时', image:'/assets/summer-scene.webp', location:'海淀区 · 新建宫门路', detail:'沿昆明湖漫步，在长廊与万寿山之间寻找皇家园林的层次。湖岸线路较长，可根据同行者体力分段游览。', tip:'游船等项目受季节与天气影响，以现场公告为准。' },
   { name:'什刹海', en:'SHICHAHAI', desc:'在水光与街巷之间，遇见慢生活', tag:'湖畔闲游', time:'建议 2–3 小时', image:'/assets/houhai-golden.webp', location:'西城区 · 后海', detail:'沿湖岸散步，走过银锭桥，再拐进周边胡同。适合把行程留白，找一处喜欢的街角坐下来。', tip:'周末和晚间客流较多，请留意步行安全与消费价格。' },
   { name:'五道营胡同', en:'WUDAOYING HUTONG', desc:'一条巷子，装得下京城烟火', tag:'街巷烟火', time:'建议 1–2 小时', image:'/assets/wudaoying-street.webp', location:'东城区 · 五道营胡同', detail:'沿着绿意包围的街巷，寻找咖啡馆、小店与青砖灰瓦。可与雍和宫、国子监组合成一段步行路线。', tip:'胡同内仍有居民生活，请保持安静，尊重私人院落。' },
@@ -37,7 +37,7 @@ export const foodSpots = [
   {name:'全聚德（前门店）',category:'北京菜',desc:'北京烤鸭老字号，适合首次到北京的游客。',location:'东城区 · 前门',price:'参考人均 ¥200–350',image:'/assets/palace-sunny.webp',source:'京途精选，价格与营业状态请以商家页面为准'},
   {name:'四世同堂',category:'北京菜',desc:'京味家常菜与传统菜式，适合多人用餐。',location:'东城区 · 崇文门',price:'参考人均 ¥100–180',image:'/assets/temple-classic.webp',source:'京途精选，价格与营业状态请以商家页面为准'},
   {name:'东来顺（王府井店）',category:'涮肉',desc:'老字号清汤铜锅涮肉。',location:'东城区 · 王府井',price:'参考人均 ¥120–220',image:'/assets/city-classic.webp',source:'京途精选，价格与营业状态请以商家页面为准'},
-  {name:'满恒记',category:'涮肉',desc:'牛街清真涮肉选择，适合安排在胡同路线。',location:'西城区 · 牛街',price:'参考人均 ¥100–160',image:'/assets/hutong-lantern.webp',source:'京途精选，价格与营业状态请以商家页面为准'},
+  {name:'满恒记',category:'涮肉',desc:'牛街清真涮肉选择，适合安排在胡同路线。',location:'西城区 · 牛街',price:'参考人均 ¥100–160',image:'/assets/verified/huguosi-sign.jpg',source:'门头图片：Top China Travel；价格与营业状态请以商家页面为准'},
   {name:'洪运轩',category:'涮肉',desc:'铜锅涮肉与清真风味。',location:'西城区 · 牛街',price:'参考人均 ¥100–180',image:'/assets/city-classic.webp',source:'京途精选，价格与营业状态请以商家页面为准'},
   {name:'阳坊胜利涮羊肉',category:'涮肉',desc:'适合喜欢传统涮羊肉的游客。',location:'海淀区 · 清河',price:'参考人均 ¥100–180',image:'/assets/wall-classic.webp',source:'京途精选，价格与营业状态请以商家页面为准'},
   {name:'花家怡园',category:'炒菜',desc:'适合多人分享的京味菜与家常炒菜。',location:'东城区 · 鼓楼',price:'参考人均 ¥120–220',image:'/assets/hutong-lantern.webp',source:'京途精选，价格与营业状态请以商家页面为准'},
@@ -67,6 +67,6 @@ export const hotels = [
     ['王府井文华东方酒店','东城区','¥1800–2500','近地铁、近商场、近故宫','高端'],['北京饭店','东城区','¥1000–1800','近地铁、近王府井、近天安门','高端'],['北京前门皇家驿栈','东城区','¥900–1500','近地铁、近前门、老城风貌','高端'],['北京金融街丽思卡尔顿酒店','西城区','¥1500–2400','近地铁、近商场、商务','高端'],['北京三里屯通盈中心洲际酒店','朝阳区','¥1300–2200','近地铁、近商场、近三里屯','高端'],['北京国贸大酒店','朝阳区','¥1200–2200','近地铁、近商场、商务','高端'],
     ['北京东直门智选假日酒店','东城区','¥500–800','近地铁、机场线方便','舒适'],['北京王府井希尔顿酒店','东城区','¥700–1100','近地铁、近商场','舒适'],['北京西单美爵酒店','西城区','¥600–1000','近地铁、近商场、近西单','舒适'],['北京什刹海皮影文化主题酒店','西城区','¥600–1000','近地铁、近后海、胡同体验','舒适'],['北京朝阳门富之旅酒店','朝阳区','¥500–850','近地铁、近商场','舒适'],['北京中关村皇冠假日酒店','海淀区','¥600–1000','近地铁、近商场、商务','舒适'],['北京丽都皇冠假日酒店','朝阳区','¥500–900','近地铁、近商场、机场方便','舒适'],
     ['北京前门大街亚朵酒店','东城区','¥450–700','近地铁、近前门、适合首次到北京','经济舒适'],['北京天坛东门智选假日酒店','东城区','¥400–650','近地铁、近天坛、早餐方便','经济舒适'],['北京西直门亚朵酒店','西城区','¥450–700','近地铁、交通方便','经济舒适'],['北京国贸劲松亚朵酒店','朝阳区','¥450–700','近地铁、近商场','经济舒适'],['北京五棵松希尔顿欢朋酒店','海淀区','¥400–650','近地铁、近商场、适合亲子','经济舒适'],['北京丰台站东街亚朵酒店','丰台区','¥350–600','近地铁、近北京丰台站','经济舒适'],['北京通州环球度假区诺富特酒店','通州区','¥500–900','近环球度假区、适合亲子','经济舒适'],
-  ].map(([name,district,price,tags,level],i)=>({name,district,price,tags,level,image:['/assets/palace-sunny.webp','/assets/city-classic.webp','/assets/hutong-lantern.webp'][i%3],source:'京途精选，价格与房态请以入住日期和酒店页面为准'})),
+  ].map(([name,district,price,tags,level],i)=>({name,district,price,tags,level,image:i===0?'/assets/verified/hotel-beijing.jpg':i===1?'/assets/verified/hotel-dongzhimen.jpg':['/assets/city-classic.webp','/assets/hutong-lantern.webp'][i%2],source:'京途精选，价格与房态请以入住日期和酒店页面为准'})),
 ];
 export type Hotel = typeof hotels[number];
