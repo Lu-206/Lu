@@ -5,6 +5,7 @@ import ExperienceStudio from './components/studio/ExperienceStudio';
 import PlannerStudio from './components/studio/PlannerStudio';
 import PlannerDialog from './components/studio/PlannerDialog';
 import DiscoverPage from './components/DiscoverPage';
+import ItineraryPage from './components/ItineraryPage';
 import CinematicHero from './components/CinematicHero';
 import {destinations, type Destination} from './data';
 import {usePageMotion} from './hooks/usePageMotion';
@@ -24,9 +25,9 @@ export default function App() {
     return()=>{window.removeEventListener('scroll',scroll);observer.disconnect();};},[]);
   const [plannerOpen, setPlannerOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [route, setRoute] = useState(() => window.location.hash === '#/discover' ? 'discover' : 'home');
-  useEffect(()=>{const onHash=()=>{const next=window.location.hash;if(next==='#/discover')setRoute('discover');else{setRoute('home');if(next==='#/planner')setPlannerOpen(true);}};window.addEventListener('hashchange',onHash);return()=>window.removeEventListener('hashchange',onHash);},[]);
-  useEffect(()=>{if(route==='discover')window.scrollTo({top:0,left:0,behavior:'auto'});},[route]);
+  const [route, setRoute] = useState(() => window.location.hash === '#/discover' ? 'discover' : window.location.hash === '#/itinerary' ? 'itinerary' : 'home');
+  useEffect(()=>{const onHash=()=>{const next=window.location.hash;if(next==='#/discover')setRoute('discover');else if(next==='#/itinerary')setRoute('itinerary');else{setRoute('home');if(next==='#/planner')setPlannerOpen(true);}};window.addEventListener('hashchange',onHash);return()=>window.removeEventListener('hashchange',onHash);},[]);
+  useEffect(()=>{if(route!=='home')window.scrollTo({top:0,left:0,behavior:'auto'});},[route]);
   const openPlanner = (value='') => {setPrompt(value);setPlannerOpen(true);};
   const [prompt, setPrompt] = useState("");
   const chat = useTravelChat();
@@ -60,13 +61,14 @@ export default function App() {
         <a className={activeNav==='home'?'active':''} href="#home" onClick={() => setMobileOpen(false)}>首页</a>
         <a className={activeNav==='discover'?'active':''} href="#/discover" onClick={() => setMobileOpen(false)}>发现北京</a>
         <a className={activeNav==='how'?'active':''} href="#/planner" onClick={() => setMobileOpen(false)}>智能规划</a>
+        <a href="#/itinerary" onClick={() => setMobileOpen(false)}>我的行程</a>
         <a className={activeNav==='about'?'active':''} href="#about" onClick={() => setMobileOpen(false)}>关于京途</a>
       </nav>
       <div className="nav-actions"><span className="status"><i/> 旅行灵感，随时开启</span><button className="nav-cta" onClick={() => startPlanning()}>开始规划 <ArrowUpRight size={15}/></button></div>
       <button className="mobile-menu" aria-label="打开菜单" onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X/> : <Menu/>}</button>
     </header>
 
-    {route==='discover' ? <DiscoverPage onPlan={value=>openPlanner(value)}/> : <main>
+    {route==='discover' ? <DiscoverPage onPlan={value=>openPlanner(value)}/> : route==='itinerary' ? <ItineraryPage/> : <main>
       <CinematicHero onPlan={()=>startPlanning()}/>
       <div className="journey-strip"><span>一座城，无数种打开方式。</span><span>文化寻踪 <i>✳</i> 胡同漫步 <i>✳</i> 山河远行 <i>✳</i> 智能规划</span></div>
       <ExperienceStudio onPlan={(value)=>startPlanning(value)}/>
