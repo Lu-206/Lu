@@ -26,6 +26,7 @@ export default function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [route, setRoute] = useState(() => window.location.hash === '#/discover' ? 'discover' : 'home');
   useEffect(()=>{const onHash=()=>{const next=window.location.hash;if(next==='#/discover')setRoute('discover');else{setRoute('home');if(next==='#/planner')setPlannerOpen(true);}};window.addEventListener('hashchange',onHash);return()=>window.removeEventListener('hashchange',onHash);},[]);
+  useEffect(()=>{if(route==='discover')window.scrollTo({top:0,left:0,behavior:'auto'});},[route]);
   const openPlanner = (value='') => {setPrompt(value);setPlannerOpen(true);};
   const [prompt, setPrompt] = useState("");
   const chat = useTravelChat();
