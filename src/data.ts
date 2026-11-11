@@ -14,3 +14,10 @@ export const destinations = [
   { name:'五道营胡同', en:'WUDAOYING HUTONG', desc:'一条巷子，装得下京城烟火', tag:'街巷烟火', time:'建议 1–2 小时', image:'/assets/wudaoying-street.webp', location:'东城区 · 五道营胡同', detail:'沿着绿意包围的街巷，寻找咖啡馆、小店与青砖灰瓦。可与雍和宫、国子监组合成一段步行路线。', tip:'胡同内仍有居民生活，请保持安静，尊重私人院落。' },
 ];
 export type Destination = typeof destinations[number];
+export const foodSpots = [
+  {name:'四季民福（故宫店）',category:'北京菜',desc:'景山视角的北京菜与烤鸭，适合安排在故宫之后。',location:'东城区 · 景山前街',price:'人均约 ¥150',image:'/assets/palace-sunny.webp',source:'精选信息，价格与排队情况请以商家页面为准'},
+  {name:'聚宝源（牛街店）',category:'涮肉',desc:'铜锅涮肉与清真风味，适合喜欢热气腾腾的晚餐。',location:'西城区 · 牛街',price:'人均约 ¥100',image:'/assets/city-classic.webp',source:'精选信息，营业状态请以商家页面为准'},
+  {name:'护国寺小吃',category:'小吃',desc:'豆汁、驴打滚、面茶等北京小吃的一站式体验。',location:'西城区 · 护国寺街',price:'人均约 ¥40',image:'/assets/hutong-lantern.webp',source:'精选信息，菜单与价格请以商家页面为准'},
+  {name:'南门涮肉',category:'涮肉',desc:'老北京铜锅涮肉，适合什刹海和天坛路线中的一餐。',location:'东城区 · 天坛东路',price:'人均约 ¥120',image:'/assets/temple-classic.webp',source:'精选信息，营业状态请以商家页面为准'},
+];
+export type FoodSpot = typeof foodSpots[number];

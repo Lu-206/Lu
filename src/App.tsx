@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, CalendarDays, MapPin, Menu, X } from "lucide-
 import ExperienceStudio from './components/studio/ExperienceStudio';
 import PlannerStudio from './components/studio/PlannerStudio';
 import PlannerDialog from './components/studio/PlannerDialog';
+import DiscoverPage from './components/DiscoverPage';
 import CinematicHero from './components/CinematicHero';
 import {destinations, type Destination} from './data';
 import {usePageMotion} from './hooks/usePageMotion';
@@ -23,6 +24,9 @@ export default function App() {
     return()=>{window.removeEventListener('scroll',scroll);observer.disconnect();};},[]);
   const [plannerOpen, setPlannerOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [route, setRoute] = useState(() => window.location.hash === '#/discover' ? 'discover' : 'home');
+  useEffect(()=>{const onHash=()=>{const next=window.location.hash;if(next==='#/discover')setRoute('discover');else{setRoute('home');if(next==='#/planner')setPlannerOpen(true);}};window.addEventListener('hashchange',onHash);return()=>window.removeEventListener('hashchange',onHash);},[]);
+  const openPlanner = (value='') => {setPrompt(value);setPlannerOpen(true);};
   const [prompt, setPrompt] = useState("");
   const chat = useTravelChat();
 
@@ -53,15 +57,15 @@ export default function App() {
       <a className="brand" href="#"><span className="brand-seal">京</span><span><b>京途 AI</b><small>JINGTU · BEIJING TRAVEL</small></span></a>
       <nav className={mobileOpen ? "nav-links open" : "nav-links"}>
         <a className={activeNav==='home'?'active':''} href="#home" onClick={() => setMobileOpen(false)}>首页</a>
-        <a className={activeNav==='discover'?'active':''} href="#discover" onClick={() => setMobileOpen(false)}>发现北京</a>
-        <a className={activeNav==='how'?'active':''} href="#how" onClick={() => setMobileOpen(false)}>智能规划</a>
+        <a className={activeNav==='discover'?'active':''} href="#/discover" onClick={() => setMobileOpen(false)}>发现北京</a>
+        <a className={activeNav==='how'?'active':''} href="#/planner" onClick={() => setMobileOpen(false)}>智能规划</a>
         <a className={activeNav==='about'?'active':''} href="#about" onClick={() => setMobileOpen(false)}>关于京途</a>
       </nav>
       <div className="nav-actions"><span className="status"><i/> 旅行灵感，随时开启</span><button className="nav-cta" onClick={() => startPlanning()}>开始规划 <ArrowUpRight size={15}/></button></div>
       <button className="mobile-menu" aria-label="打开菜单" onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X/> : <Menu/>}</button>
     </header>
 
-    <main>
+    {route==='discover' ? <DiscoverPage onPlan={value=>openPlanner(value)}/> : <main>
       <CinematicHero onPlan={()=>startPlanning()}/>
       <div className="journey-strip"><span>一座城，无数种打开方式。</span><span>文化寻踪 <i>✳</i> 胡同漫步 <i>✳</i> 山河远行 <i>✳</i> 智能规划</span></div>
       <ExperienceStudio onPlan={(value)=>startPlanning(value)}/>
@@ -69,12 +73,12 @@ export default function App() {
       <section className="discover section-pad" id="discover">
         <div className="discover-heading reveal"><div><div className="section-kicker"><span>02</span><i/> CURATED BEIJING</div><h2>循着城市的脉络，<br/><em>发现北京。</em></h2></div><p>从皇家气韵到市井烟火，<br/>每一处风景，都有自己的故事。</p></div>
         <div className="destination-grid">{destinations.map((item, index) => <article className="destination-card reveal" key={item.name}><button className="destination-photo" onClick={()=>setSelected(item)} aria-label={`查看${item.name}详情`}><img src={item.image} alt={item.name} loading="lazy" width="700" height="500"/><span className="photo-index">0{index + 1}</span><span className="photo-tag">{item.tag}</span><span className="view-destination">探索这里 <ArrowUpRight size={18}/></span></button><div className="destination-info"><div><small>{item.en}</small><h3>{item.name}</h3><p>{item.desc}</p><span className="destination-location"><MapPin size={12}/>{item.location}</span></div><div className="destination-foot"><span><CalendarDays size={13}/> {item.time}</span><button aria-label={`规划${item.name}行程`} onClick={() => startPlanning(`我想去${item.name}，请帮我安排周边行程`)}><ArrowUpRight size={18}/></button></div></div></article>)}</div>
-        <div className="center-action"><button className="outline-button" onClick={() => startPlanning("帮我探索北京值得去的地方")}>探索更多目的地 <ArrowRight size={16}/></button></div>
+        <div className="center-action"><button className="outline-button" onClick={() => { window.location.hash = '#/discover'; }}>探索更多目的地 <ArrowRight size={16}/></button></div>
       </section>
 
       <PlannerStudio prompt={prompt} onChange={setPrompt} onPlan={()=>startPlanning()}/>
       <section className="planner-band" id="about"><div className="planner-text"><div className="section-kicker light"><span>04</span><i/> YOUR JOURNEY, REIMAGINED</div><h2>北京很大，<br/><em>不必一个人做攻略。</em></h2><p>把想去的地方、同行的人、心里的预算告诉京途。<br/>剩下的交给 AI，一起把旅程安排妥当。</p><button className="button-gold" onClick={() => startPlanning()}>和京途聊一聊 <ArrowRight size={17}/></button></div><div className="planner-art"><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="art-seal">京<span>途</span><small>AI TRAVEL</small></div><div className="art-caption">TRAVEL WITH<br/>A LITTLE MORE MEANING.</div></div></section>
-    </main>
+    </main>}
 
     <footer><a className="brand footer-brand" href="#"><span className="brand-seal">京</span><span><b>京途 AI</b><small>JINGTU · BEIJING TRAVEL</small></span></a><span>让 AI 理解每一位游客，让北京之旅更智能。</span><span>© 2026 JINGTU AI · <a href="/assets/CREDITS.md" target="_blank" rel="noreferrer" style={{color:"inherit"}}>摄影署名</a></span></footer>
 
