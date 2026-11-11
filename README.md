@@ -4,6 +4,7 @@ React 19 + TypeScript + Vite + Tailwind CSS + GSAP ScrollTrigger。
 
 ```sh
 npm ci
+# 首次启动：复制 .env.example 为 .env，并在服务端配置 DEEPSEEK_API_KEY
 npm run dev
 ```
 
@@ -18,7 +19,7 @@ npm run dev
 - 移动端分段场景、汉堡导航；减少动态效果偏好下关闭固定滚动动画。
 - 弹窗支持 Escape、焦点循环和关闭后返回原触发点。
 
-当前 AI 规划保留为明确标记的前端演示，未连接模型、地图、预订或实时旅游数据接口。
+Day 2 已实现服务端 DeepSeek 接口、多轮需求更新、结构化校验与本机偏好保存。需配置服务端密钥后使用真实 AI；尚未接入地图、预订或实时旅游数据。启动前的密钥配置、测试与验收见 [Day 2 文档](docs/day2.md)。当前开发环境无密钥，真实模型验收待执行。
 
 ## 设计
 

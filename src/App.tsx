@@ -7,6 +7,7 @@ import PlannerDialog from './components/studio/PlannerDialog';
 import CinematicHero from './components/CinematicHero';
 import {destinations, type Destination} from './data';
 import {usePageMotion} from './hooks/usePageMotion';
+import {useTravelChat} from './hooks/useTravelChat';
 
 
 
@@ -23,9 +24,7 @@ export default function App() {
   const [plannerOpen, setPlannerOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [prompt, setPrompt] = useState("");
-  const [days, setDays] = useState("3 天");
-  const [budget, setBudget] = useState("人均 2000 元");
-  const [submitted, setSubmitted] = useState(false);
+  const chat = useTravelChat();
 
   useEffect(()=>{
     if(!plannerOpen&&!selected)return;
@@ -35,8 +34,8 @@ export default function App() {
     const key=(e:KeyboardEvent)=>{
       if(e.key==='Escape'){setPlannerOpen(false);setSelected(null);}
       if(e.key==='Tab'){
-        const els=modalRef.current?.querySelectorAll<HTMLElement>('button:not(:disabled),textarea,select,a[href]');
-        if(!els?.length)return;const first=els[0],last=els[els.length-1];
+        const els=Array.from(modalRef.current?.querySelectorAll<HTMLElement>('button:not(:disabled),textarea:not(:disabled),input:not(:disabled),select:not(:disabled),summary,a[href]') || []).filter(el=>{const closed=el.closest('details:not([open])');return (!closed || el===closed.querySelector('summary')) && el.getClientRects().length>0 && el.tabIndex>=0;});
+        if(!els.length)return;const first=els[0],last=els[els.length-1];
         if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
         else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
       }
@@ -45,7 +44,6 @@ export default function App() {
   },[plannerOpen,selected]);
   const startPlanning = (value = prompt) => {
     setPrompt(value);
-    setSubmitted(false);
     setPlannerOpen(true);
   };
 
@@ -81,7 +79,7 @@ export default function App() {
     <footer><a className="brand footer-brand" href="#"><span className="brand-seal">京</span><span><b>京途 AI</b><small>JINGTU · BEIJING TRAVEL</small></span></a><span>让 AI 理解每一位游客，让北京之旅更智能。</span><span>© 2026 JINGTU AI · <a href="/assets/CREDITS.md" target="_blank" rel="noreferrer" style={{color:"inherit"}}>摄影署名</a></span></footer>
 
     {selected && <div className="modal-backdrop" onMouseDown={e=>{if(e.target===e.currentTarget)setSelected(null);}}><section ref={modalRef} className="planner-modal destination-modal" role="dialog" aria-modal="true" aria-labelledby="destination-title"><button className="modal-close" onClick={()=>setSelected(null)} aria-label="关闭详情"><X/></button><img src={selected.image} alt={selected.name}/><div className="detail-copy"><div className="modal-kicker">{selected.en}</div><h2 id="destination-title">{selected.name}</h2><p className="destination-location"><MapPin size={13}/>{selected.location} · {selected.time}</p><p>{selected.detail}</p><p className="detail-tip">出行提示：{selected.tip}</p><button className="button-red" onClick={()=>{const name=selected.name;setSelected(null);startPlanning(`我想去${name}，请帮我安排周边行程`);}}>加入我的旅行想法 <ArrowRight size={17}/></button></div></section></div>}
-    {plannerOpen && <PlannerDialog dialogRef={modalRef} prompt={prompt} setPrompt={setPrompt} days={days} setDays={setDays} budget={budget} setBudget={setBudget} submitted={submitted} setSubmitted={setSubmitted} onClose={()=>setPlannerOpen(false)}/>}
+    {plannerOpen && <PlannerDialog dialogRef={modalRef} prompt={prompt} setPrompt={setPrompt} chat={chat} onClose={()=>setPlannerOpen(false)}/>}
 
   </div>;
 }

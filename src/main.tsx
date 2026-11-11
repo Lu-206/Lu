@@ -4,6 +4,7 @@ import App from "./App";
 import "./styles.css";
 import "./components/studio/studio.css";
 import "./components/studio/daylight.css";
+import "./components/studio/travel-chat.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode><App /></React.StrictMode>
