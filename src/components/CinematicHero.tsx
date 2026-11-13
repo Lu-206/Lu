@@ -53,7 +53,7 @@ export default function CinematicHero({onPlan}:{onPlan:()=>void}) {
      <div className="cinema-kicker"><span/> {s.label}</div>
      {i===0?<h1>{s.title}<br/><em>{s.accent}</em></h1>:<h2>{s.title}<br/><em>{s.accent}</em></h2>}
      <p className="scene-subtitle">{s.subtitle}</p><p className="scene-description">{s.description}</p>
-     <div className="scene-buttons"><button className="button-gold magnetic" onClick={onPlan}>{i===4?'开始智能规划':'开启智能旅程'} <ArrowUpRight size={18}/></button><a href="#discover">探索北京 <ArrowDown size={15}/></a></div>
+     {i===4&&<div className="scene-buttons final-scene-actions"><button className="button-gold magnetic" onClick={onPlan}>开启智能旅游 <ArrowUpRight size={18}/></button><a href="#/discover">探索北京 <ArrowDown size={15}/></a></div>}
     </div>
     <div className="scene-caption"><MapPin size={13}/>{s.location}<span>39°54′ N / 116°24′ E</span></div>
    </article>)}
